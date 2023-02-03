@@ -11,7 +11,7 @@ export default defineConfig({
   ignoreDeadLinks: true,
   lang: 'zh-CN',
   head: [
-    ['link', { rel: 'icon', type: "image/x-icon", href: '/logo.png' }]
+    ['link', { rel: 'icon', type: "image/x-icon", href: '/imgs/logo.png' }]
   ],
   markdown: {
     theme: 'material-palenight', 
@@ -19,7 +19,7 @@ export default defineConfig({
   },
   themeConfig: {
     // siteTitle: '知识笔记',
-    logo: '/logo.png',
+    logo: '/imgs/logo.png',
     // 顶部导航
     nav: [
       { text: '首页', link: '/' },
@@ -42,13 +42,13 @@ export default defineConfig({
             { text: 'JavaScript 性能优化', link: '/js/performance/' },
           ]
         },
-        {
-          text: 'Guide2',
-          items: [
-            { text: 'Introduction', link: '/introduction' },
-            { text: 'Getting Started', link: '/getting-started' },
-          ]
-        }
+        // {
+        //   text: 'Guide2',
+        //   items: [
+        //     { text: 'Introduction', link: '/introduction' },
+        //     { text: 'Getting Started', link: '/getting-started' },
+        //   ]
+        // }
       ]
       
     },

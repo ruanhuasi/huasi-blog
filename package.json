@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "sass": "^1.56.2",
+    "scss": "^0.2.4",
     "vitepress": "1.0.0-alpha.29",
     "vue": "^3.2.45"
   }
