@@ -20,6 +20,12 @@ export default defineConfig({
   themeConfig: {
     // siteTitle: '知识笔记',
     logo: '/imgs/logo.png',
+    // 全局搜索
+    algolia: {
+      appId: '...',
+      apiKey: '...',
+      indexName: '...'
+    },
     // 顶部导航
     nav: [
       { text: '首页', link: '/' },
