@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 开始浏览
-      link: /js/
+      link: /js/es6/
     - theme: alt
       text: 查看个人主页
       link: https://huasi.fun

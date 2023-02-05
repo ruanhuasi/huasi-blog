@@ -35,9 +35,10 @@ export default defineConfig({
         text: '前端',
         items: [
           { text: 'JavaScript', link: '/js/es6/' },
+          { text: 'TypeScript', link: '/ts/basics/' },
+          { text: '前端工程化', link: '/engineering/' },
           { text: 'Vue', link: '/vue/' },
           { text: 'React', link: '/react/' },
-          { text: '前端工程化', link: '/engineering/' }
         ]
       }
     ],
@@ -50,14 +51,33 @@ export default defineConfig({
             { text: 'JavaScript 性能优化', link: '/js/performance/' },
           ]
         },
-        // {
-        //   text: 'Guide2',
-        //   items: [
-        //     { text: 'Introduction', link: '/introduction' },
-        //     { text: 'Getting Started', link: '/getting-started' },
-        //   ]
-        // }
-      ]
+        {
+          text: '进阶',
+          items: [
+            { text: '函数式编程范式', link: '/js/function/' },
+            { text: '异步编程', link: '/js/asynchronous/' },
+          ]
+        }
+      ],
+      '/ts': [
+        {
+          text: '基础',
+          items: [
+            { text: '类型系统', link: '/ts/basics/' },
+            { text: '入门', link: '/ts/introduction/' },
+          ]
+        },
+      ],
+      '/engineering': [
+        {
+          items: [
+            { text: '自动化构建', link: '/engineering/' },
+            { text: '脚手架工具', link: '/engineering/cli/' },
+            { text: '模块化开发', link: '/engineering/module/' },
+            { text: 'webpack-前端模块打包工具', link: '/engineering/webpack/' },
+          ]
+        },
+      ],
       
     },
     // 侧边栏
