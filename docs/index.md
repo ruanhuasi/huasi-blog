@@ -8,6 +8,7 @@ hero:
   image:
     src: /imgs/home_logo.svg
     alt: 华斯的博客
+    size: 200
   actions:
     - theme: brand
       text: 开始浏览
@@ -34,11 +35,11 @@ features:
     --vp-home-hero-name-color: transparent;
     --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
 
-    --vp-c-brand: #16a0db;
-    --vp-c-brand-light: #25beff;
-    --vp-c-brand-lighter: #5cceff;
-    --vp-c-brand-dark: #198aba;
-    --vp-c-brand-darker: #13678a;
+    --vp-c-brand: #6C63FF;
+    --vp-c-brand-light: #766EFD;
+    --vp-c-brand-lighter: #8179FB;
+    --vp-c-brand-dark: #5048FA;
+    --vp-c-brand-darker: #4339F2;
 
     --vp-c-second: #e44a8a;
     --vp-c-second-light: #f962a1;

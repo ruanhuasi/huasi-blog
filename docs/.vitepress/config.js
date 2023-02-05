@@ -21,13 +21,13 @@ export default defineConfig({
     // siteTitle: '知识笔记',
     logo: '/imgs/logo.png',
     // 全局搜索
-    algolia: {
-      appId: '5BTR9V738B',
-      apiKey: 'b5afeb768172d5eabc78d73f93c2c52e',
-      indexName: 'docs',
-      placeholder: '请输入关键字',
-      buttonText: '搜索',
-    },
+    // algolia: {
+    //   appId: '5BTR9V738B',
+    //   apiKey: 'b5afeb768172d5eabc78d73f93c2c52e',
+    //   indexName: 'docs',
+    //   placeholder: '请输入关键字',
+    //   buttonText: '搜索',
+    // },
     // 顶部导航
     nav: [
       { text: '首页', link: '/' },
