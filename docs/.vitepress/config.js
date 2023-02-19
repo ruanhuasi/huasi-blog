@@ -11,7 +11,8 @@ export default defineConfig({
   ignoreDeadLinks: true,
   lang: 'zh-CN',
   head: [
-    ['link', { rel: 'icon', type: "image/x-icon", href: '/imgs/logo.png' }]
+    ['link', { rel: 'icon', type: "image/x-icon", href: '/imgs/logo.png' }],
+    ['script', { src: 'https://hm.baidu.com/hm.js?b70a50c09ed849336569ec0ec2fdecc2' }]
   ],
   markdown: {
     theme: 'material-palenight', 
