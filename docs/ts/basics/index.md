@@ -40,7 +40,7 @@
 
 ### 弱类型的问题
 
-```javascript
+```TypeScript
 //必须要到运行阶段才能发现问题，语法上不会报错
 const obj = {}
 obj.foo() // 不存在的方法
@@ -72,7 +72,7 @@ console.log(obj['true'])
 -   重构更牢靠
 -   减少不必要的类型判断
 
-```javascript
+```TypeScript
 
 
 fucntion render(){
@@ -105,7 +105,7 @@ function sum(a, b){
 ## Flow
 >   JavaScript 的类型检查器，弥补 JS 弱类型带来的弊端，为 JS 提供了更完善的类型系统
 
-```javascript
+```TypeScript
 
 // 通过添加类型注解，Flow根据类型注解来检查代码当中的类型异常，避免到运行阶段才发现错误
 function sum(a:number, b:number){
@@ -116,7 +116,7 @@ function sum(a:number, b:number){
 
 ### 快速上手
 
-```javascript
+```TypeScript
 
 yarn init --yes
 yarn add Flow-bin --dev
@@ -124,7 +124,7 @@ yarn add Flow-bin --dev
 ```
 
 在文件开始的位置通过注释的方式添加 @flow 标记，这样 flow 才会检查
-```javascript
+```TypeScript
 // @flow
 function sum(a: number, b: number){
     return a+b
@@ -145,7 +145,7 @@ yarn flow
 ### 编译
 >   通过编译移除注解
 
-```cmd 
+```shell 
 方式一：
 
 yarn  add flow-remove-types --dev
@@ -171,7 +171,7 @@ yarn babel src -d dist
 
 ### Flow 开发工具插件
 > 使用插件后错误信息直接显示在代码上，无需执行编译检查
-```cmd
+```shell
 
 Flow Language Support
 
@@ -180,7 +180,7 @@ Flow Language Support
 
 ### 类型推断
 
-```javascript
+```TypeScript
 
 /**
  * 类型推断
@@ -202,7 +202,7 @@ Flow Language Support
 ### 类型注解
 >  更明确的限制类型，对后期理解代码更有帮助，尽可能使用类型注解 
 
-```javascript
+```TypeScript
 
 /**
  * 类型注解
@@ -230,7 +230,7 @@ function foo(): void{
 ### 原始类型
 >  Flow 当中具体支持哪些类型和类型注解的更高级用法
 
-```javascript
+```TypeScript
 
 /**
  * 原始类型
@@ -257,7 +257,7 @@ const f: symbol = Symbol()
 
 ### 数组类型
 
-```javascript
+```TypeScript
 
 /**
  * 数组类型
@@ -281,7 +281,7 @@ const foo: [string, number] = ['foo', 100] // 固定长度的数组
 
 ### 对象类型
 
-```javascript
+```TypeScript
 
 /**
  * 对象类型
@@ -306,7 +306,7 @@ obj3.key2 = 'value2'
 
 ### 函数类型
 
-```javascript
+```TypeScript
 
 /**
  * 函数类型
@@ -336,7 +336,7 @@ foo(function(str, n){
 
 ### 特殊类型
 
-```javascript
+```TypeScript
 
 /**
  * 特殊类型
@@ -369,7 +369,7 @@ const gender: number | null = null
 
 ### Mixed 与 Any
 
-```javascript
+```TypeScript
 
 /**
  * 任意类型
@@ -410,7 +410,7 @@ passMixed(100)
 
 ### 运行环境 API
 
-```javascript
+```TypeScript
 
 /**
  * 运行环境 API

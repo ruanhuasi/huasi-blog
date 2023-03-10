@@ -33,13 +33,25 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       {
-        text: '前端',
+        text: '🕹前端',
         items: [
           { text: 'JavaScript', link: '/js/es6/' },
           { text: 'TypeScript', link: '/ts/basics/' },
           { text: '前端工程化', link: '/engineering/' },
-          { text: 'Vue', link: '/vue/' },
-          { text: 'React', link: '/react/' },
+          { text: 'Vue', link: '/vue/introduction/' },
+          { text: 'React', link: '/react/introduction/' },
+        ]
+      },
+      {
+        text: '🎰后端',
+        items: [
+          { text: 'node', link: '/node/introduction/' },
+        ]
+      },
+      {
+        text: '💡分享',
+        items: [
+          { text: '技术', link: '/share/gitCommon/' },
         ]
       }
     ],
@@ -76,6 +88,38 @@ export default defineConfig({
             { text: '脚手架工具', link: '/engineering/cli/' },
             { text: '模块化开发', link: '/engineering/module/' },
             { text: 'webpack-前端模块打包工具', link: '/engineering/webpack/' },
+          ]
+        },
+      ],
+      '/vue': [
+        {
+          text: '基础',
+          items: [
+            { text: '入门', link: '/vue/introduction/' },
+          ]
+        }
+      ],
+      '/react': [
+        {
+          text: '基础',
+          items: [
+            { text: '入门', link: '/react/introduction/' },
+          ]
+        }
+      ],
+      '/node': [
+        {
+          text: '基础',
+          items: [
+            { text: '入门', link: '/node/introduction/' },
+          ]
+        }
+      ],
+      '/share': [
+        {
+          items: [
+            { text: 'Git 常用命令', link: '/share/gitCommon/' },
+            { text: '模块联邦', link: '/share/moduleFederation/' },
           ]
         },
       ],

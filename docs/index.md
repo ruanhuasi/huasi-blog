@@ -14,14 +14,14 @@ hero:
       text: 开始浏览
       link: /js/es6/
     - theme: alt
-      text: 查看个人主页
+      text: 个人主页
       link: https://huasi.fun
 
 features:
-  - icon: ⚡️
+  - icon:  🕹
     title: 前端
     details: JavaScript, TypeScript, Vue, React ...
-  - icon: 🖖
+  - icon:  🎰
     title: 后端
     details: Node.js， 数据库...
   - icon: 🛠️
