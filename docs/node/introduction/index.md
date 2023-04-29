@@ -77,8 +77,6 @@ javascript.ruanyifeng.com
 
 **node辅助测试类似于浏览器中console**
 
-![](J:\陌生笔记\img\20181118132354.png)
-
 
 
 ## HelloWord
@@ -451,8 +449,6 @@ fs.readFile('./tpl.html',function(err,data) {
 
 
 ## 留言板案例总结
-
-![](J:\陌生笔记\img\20181118142259.png)
 
 1. 为了让目录结构保持统一清晰，所以我们约定，把所有的 HTML 文件都放到 views(视图)
 2. 我们为了方便的统一处理这些静态资源，所以我们约定把所有的静态资源都存放在 public 目录中
