@@ -140,36 +140,6 @@ export default {
 查看错误详情
 ![错误详情](https://i.postimg.cc/TYcTtBKF/Snipaste-2023-04-29-16-19-36.png)
 
-vue3 + vite
-```javascript
-import {createApp} from 'vue';
-import {createRouter} from 'vue-router';
-import * as Sentry from '@sentry/vue';
-
-const app = createApp({
-  // ...
-});
-const router = createRouter({
-  // ...
-});
-
-Sentry.init({
-  app,
-  dsn: '项目对应的dsn',
-  integrations: [
-    new Sentry.BrowserTracing({
-      routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-    }),
-    new Sentry.Replay(),
-  ],
-  // Performance Monitoring
-  tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
-});
-
-app.use(router);
-app.mount('#app');
-```
-
 ## 上传sourceMap到sentry
 
 > 为了方便查看具体的报错内容，我们需要上传`sourceMap`到`sentry`平台。可以通过 `sentry-cli` 通过命令行的方式来上传 `source-map` ，但是需要手动上传。也可以采用 `webpack-plugin` 这个插件，可以在 `build` 的同时自动上传 `source-map` 。本文采用自动上传策略
