@@ -120,6 +120,7 @@ export default defineConfig({
           items: [
             { text: 'Git 常用命令', link: '/share/gitCommon/' },
             { text: '模块联邦', link: '/share/moduleFederation/' },
+            { text: '前端监控', link: '/share/monitor/' },
           ]
         },
       ],
