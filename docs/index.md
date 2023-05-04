@@ -47,4 +47,8 @@ features:
     --vp-c-second-dark: #b31858;
     --vp-c-second-darker: #720e37; 
   }
+  img{
+      display: inline-block;
+      cursor: pointer;
+  }
 </style>

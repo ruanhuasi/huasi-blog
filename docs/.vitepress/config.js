@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import mdItCustomAttrs  from 'markdown-it-custom-attrs'
 
 export default defineConfig({
   base: '/', // 网站根路径
@@ -12,11 +13,22 @@ export default defineConfig({
   lang: 'zh-CN',
   head: [
     ['link', { rel: 'icon', type: "image/x-icon", href: '/imgs/logo.png' }],
-    ['script', { src: 'https://hm.baidu.com/hm.js?b70a50c09ed849336569ec0ec2fdecc2' }]
+    ['script', { src: 'https://hm.baidu.com/hm.js?b70a50c09ed849336569ec0ec2fdecc2' }],
+    [
+      "link",
+      { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" },
+    ],
+    ["script", { src: "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js" }],
   ],
   markdown: {
     theme: 'material-palenight', 
     lineNumbers: true,
+    config: (md) => {
+      // use more markdown-it plugins!
+      md.use(mdItCustomAttrs, 'image', {
+          'data-fancybox': "gallery"
+      })
+    }
   },
   themeConfig: {
     // siteTitle: '知识笔记',
