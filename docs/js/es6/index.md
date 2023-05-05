@@ -1199,119 +1199,290 @@ const todos = {
 
 ## ECMAScript 2016
 
+**Array.prototype.includes()**
+> 方法用于判断一个数组是否包含一个指定的值，返回一个布尔值
 ```javascript
-
-// 1.Array.prototype.includes
-
-const arr = ['foo',1,NaN,false]
-console.log( arr.indexOf(NaN) ) // -1
-console.log( arr.includes(NaN) ) // true
-
-
-// 2.指数运算符（对于数学密集型的应用会比较常用）
-console.log(Math.pow(2, 10)) // 1024
-console.log(2 ** 10) // 2014
+const arr = [1, 2, 3, 4, 5];
+console.log(arr.includes(3)); // true
+console.log(arr.includes(6)); // false
 
 ```
 
 
 ## ECMAScript 2017
 
-**Object 的三个扩展方法**
+**Object.values()**
+> 方法返回一个给定对象自身的所有可枚举属性值的数组，值的顺序与使用for...in循环的顺序相同
 ```javascript
+const obj = { a: 1, b: 2, c: 3 };
+const values = Object.values(obj);
+console.log(values); // [1, 2, 3]
+```
 
+**Object.entries()**
+> 方法返回一个给定对象自身可枚举属性的键值对数组，值的顺序与使用for...in循环的顺序相同
+```javascript
+const obj = { a: 1, b: 2, c: 3 };
+const entries = Object.entries(obj);
+console.log(entries); // [['a', 1], ['b', 2], ['c', 3]]
+```
+
+**String.prototype.padStart()**
+> String.prototype.padStart()方法用另一个字符串填充当前字符串，以便产生的字符串达到给定的长度。填充从当前字符串的开头（左侧）开始
+```javascript
+const str = 'hello';
+const paddedStr = str.padStart(10, ' ');
+console.log(paddedStr); // '     hello'
+```
+
+**String.prototype.padEnd()**
+> String.prototype.padEnd()方法用另一个字符串填充当前字符串，以便产生的字符串达到给定的长度。填充从当前字符串的结尾（右侧）开始
+```javascript
+const str = 'hello';
+const paddedStr = str.padEnd(10, ' ');
+console.log(paddedStr); // 'hello     '
+```
+
+**Object.getOwnPropertyDescriptors()**
+> Object.getOwnPropertyDescriptors()方法返回指定对象所有自身属性（非继承属性）的描述符。这些描述符是一个对象，其中每个属性的键是属性名称，值是属性描述符
+```javascript
 const obj = {
-    foo: 'value1',
-    bar: 'value2'
+  a: 1,
+  b: 2,
+  get c() {
+    return this.a + this.b;
+  }
+};
+
+const descriptors = Object.getOwnPropertyDescriptors(obj);
+console.log(descriptors);
+/*
+{
+  a: { value: 1, writable: true, enumerable: true, configurable: true },
+  b: { value: 2, writable: true, enumerable: true, configurable: true },
+  c: {
+    get: [Function: get c],
+    set: undefined,
+    enumerable: true,
+    configurable: true
+  }
 }
-
-// 1.Object.values -------------------------
-console.log( Object.values(obj) ) // ['value1', 'value2'] 与 Object.keys对应
-
-// 2.Object.entries -------------------------
-console.log(  Object.entries(obj) ) // [ ['foo','value1'],['bar','value2']]
-// 以数组的形式返回对象当中的键值对，这使得我们可以使用 for...of 遍历对象
-
-for( const [key,value] of Object.entries(obj) ){
-    console.log(key,value)
-}
-
-// 又因为 Map 的构造函数需要的就是这种格式的数组，所以我们就可以借助 Object.entries 方法将一个对象转换成 Map 对象
-console.log( new Map(Object.entries(obj)) )
-
-
-// 3.Object.getOwnPropertyDescriptors -------------------------
-// 获取对象中属性的完整描述信息，配合 ES5 中对象的 get,set使用，可以获取 get、set 这样类型的数据
- const p1 = {
-     firstName: 'Lei',
-     lastName: 'Wang',
-     get fullName(){
-         return this.firstName + '' + this.lastName
-     }
- }
- 
- const p2 = Object.assign( {},p1 )
- p2.firstName = 'zce'
- console.log(p2) // { firstNmae:'zce',lastName:'Wang',fullName: 'Lei Wang' }
- // 这里复制对象时把，fullName也当作普通属性复制了
- 
- const descriptors = Object.getOwnPropertyDescriptors(p1)
- const p2 = Object.defineProperties({},descriptors)
- console.log(p2.fullName) // zce Wang
- 
+*/
 ```
 
-**字符串填充方法**
->   用给定的字符串去填充目标字符串的开始或结束位置，直到我们这个字符串达到指定位置为止
+## ECMAScript 2018
 
--   padStart
--   padEnd
-
+**异步迭代器**
+> 异步迭代器是一种新的迭代器类型，它允许我们在异步代码中使用for-await-of循环。异步迭代器是一个对象，它具有一个异步next()方法，该方法返回一个Promise，该Promise解析为一个具有value和done属性的对象
 ```javascript
-
-// String.prototype.padStart / String.prototype.padEnd
-const books = {
-    html: 5,
-    css: 6,
-    javascript: 128
+async function* asyncGenerator() {
+  yield 1;
+  yield 2;
+  yield 3;
 }
 
-for ( const [name, count] of Object.entries(books) ){
-    console.log(name,count) // 直接输出会显得非常乱
-}
-
-// 使用字符串的方法，去将输出的字符串进行对齐
-for ( const [name, count] of Object.entries(books) ){
-    console.log(`${name.padEnd(16,'-')}|${ count.toString().padStart(3, '0') }`) // 直接输出会显得非常乱
-}
-
-
+(async function() {
+  for await (const num of asyncGenerator()) {
+    console.log(num);
+  }
+})();
+// Output:
+// 1
+// 2
+// 3
 ```
 
-**在函数参数中，添加尾逗号**
 
+**Promise.prototype.finally()**
+> Promise.prototype.finally()方法返回一个Promise，在Promise结束时，无论结果是fulfilled还是rejected，都会执行指定的回调函数
 ```javascript
-
-function foo(
-    bar,
-    baz,
-){
-    
+function fetchData() {
+  return fetch('https://jsonplaceholder.typicode.com/todos/1')
+    .then(response => response.json())
+    .finally(() => console.log('fetchData() completed'));
 }
 
-// 作用类似于以往我们在数组尾部添加逗号、
+fetchData().then(data => console.log(data));
+// Output:
+// fetchData() completed
+// { userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+```
 
-// 从运行的角度，这里添加和不添加逗号，输出都是没有任何差异的，
-// 但是很多人都愿意这么样去使用，有两个好处：
-// 1.如果我们想重新排列数组的顺序，每行后面都有逗号，格式是一致的，可以直接用快捷键进行调整 alt+↑
-// 2.我们如果去修改了这个数组中元素的个数，这个时候我们只需要新建一行就可以了，如果最后一位没有逗号的话，我们首先需要在最后一行添加一个逗号，再来新增一行添加新的元素，这样的话对我们源代码来讲，是需要修改两行。所以我们在结束位置添加逗号，可以让源代码管理工具更精确的定位到发生变化的位置
-const arr=[
-    100,
-    200,
-    300,
-]
+
+**Rest/Spread 属性**
+> Rest/Spread 属性允许我们使用...语法来展开数组和对象。在函数参数中，Rest属性允许我们将多个参数收集到一个数组中。在对象字面量中，Spread属性允许我们将一个对象的属性展开到另一个对象中
+```javascript
+// Rest 属性
+function sum(...numbers) {
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+
+console.log(sum(1, 2, 3, 4, 5)); // 15
+
+// Spread 属性
+const obj1 = { a: 1, b: 2 };
+const obj2 = { ...obj1, c: 3 };
+
+console.log(obj2); // { a: 1, b: 2, c: 3 }
 
 ```
 
-**Async / await**
->   彻底解决了回调函数嵌套过深的问题，使得我们代码更加简洁易读，本质上就是使用 Promise 的语法糖而已
+
+## ECMAScript 2019
+
+**Array.prototype.{flat,flatMap}()**
+> 方法用于将嵌套的数组“扁平化”，即将多维数组转换为一维数组。Array.prototype.flatMap()方法首先使用映射函数映射每个元素，然后将结果压缩成一个新数组
+```javascript
+const arr = [1, [2, 3], [4, [5, 6]]];
+console.log(arr.flat()); // [1, 2, 3, 4, [5, 6]]
+
+const arr2 = [1, 2, 3];
+console.log(arr2.flatMap(x => [x * 2])); // [2, 4, 6]
+```
+
+**Object.fromEntries()**
+> 方法将键值对列表转换为一个对象
+```javascript
+const entries = [['a', 1], ['b', 2], ['c', 3]];
+const obj = Object.fromEntries(entries);
+console.log(obj); // { a: 1, b: 2, c: 3 }
+
+```
+
+**String.prototype.{trimStart,trimEnd}()**
+> String.prototype.trimStart()方法用于从字符串的开头删除空格字符
+
+> String.prototype.trimEnd()方法用于从字符串的结尾删除空格字符
+```javascript
+const str = '   hello   ';
+console.log(str.trimStart()); // 'hello   '
+console.log(str.trimEnd()); // '   hello'
+
+```
+
+**Symbol.prototype.description**
+> 属性返回Symbol对象的可选描述符
+```javascript
+const sym = Symbol('foo');
+console.log(sym.description); // 'foo'
+
+```
+
+## ECMAScript 2020
+
+**BigInt**
+> BigInt是一种新的原始数据类型，用于表示任意精度的整数。它可以表示比Number类型更大的整数
+```javascript
+const bigNum = 9007199254740991n;
+console.log(bigNum + 1n); // 9007199254740992n
+
+```
+
+**Promise.allSettled()**
+> Promise.allSettled()方法返回一个Promise，该Promise在所有给定的Promise已经fulfilled或rejected后解析，并带有一个对象数组，每个对象表示对应的Promise结果
+```javascript
+const promises = [
+  Promise.resolve('resolved'),
+  Promise.reject('rejected'),
+  Promise.resolve('resolved again')
+];
+
+Promise.allSettled(promises)
+  .then(results => console.log(results));
+// Output:
+// [
+//   { status: 'fulfilled', value: 'resolved' },
+//   { status: 'rejected', reason: 'rejected' },
+//   { status: 'fulfilled', value: 'resolved again' }
+// ]
+
+```
+
+**globalThis**
+> globalThis是一个新的全局对象，它提供了一种标准的方式来访问全局对象，无论在哪个环境中运行JavaScript代码
+```javascript
+console.log(globalThis === window); // true in browsers
+console.log(globalThis === global); // true in Node.js
+
+```
+
+**Optional Chaining**
+> 可选链操作符（Optional Chaining）允许我们在访问对象的属性或方法时，避免出现TypeError错误，当属性或方法不存在时，它会返回undefined
+```javascript
+const obj = {
+  prop1: {
+    prop2: {
+      prop3: 'hello'
+    }
+  }
+};
+
+console.log(obj?.prop1?.prop2?.prop3); // 'hello'
+console.log(obj?.prop1?.prop2?.prop4); // undefined
+
+```
+
+**Nullish Coalescing Operator**
+> 空值合并操作符（Nullish Coalescing Operator）用于判断一个值是否为null或undefined，如果是，则返回默认值
+```javascript
+const foo = null;
+const bar = 'hello';
+
+console.log(foo ?? 'default'); // 'default'
+console.log(bar ?? 'default'); // 'hello'
+console.log(foo || 'default'); // 'default'
+console.log(bar || 'default'); // 'hello'
+
+```
+
+
+## ECMAScript 2021
+
+**String.prototype.replaceAll()**
+> String.prototype.replaceAll()方法用于将字符串中的所有匹配项替换为新的字符串
+```javascript
+const str = 'hello world';
+console.log(str.replaceAll('l', 'L')); // 'heLLo worLd'
+
+```
+
+**Promise.any()**
+> Promise.any()方法返回一个Promise，该Promise在任何给定的Promise已经fulfilled后解析，并带有一个值，该值是已经fulfilled的Promise的值
+```javascript
+const promises = [
+  Promise.reject('rejected'),
+  Promise.resolve('resolved'),
+  Promise.reject('rejected again')
+];
+
+Promise.any(promises)
+  .then(result => console.log(result));
+// Output:
+// 'resolved'
+
+```
+
+**Logical Assignment Operators**
+> 逻辑赋值运算符（Logical Assignment Operators）是一种新的赋值运算符，它将逻辑运算符与赋值运算符结合起来，使得代码更加简洁
+```javascript
+let x = true;
+let y = false;
+
+x &&= y;
+console.log(x); // false
+
+let a = null;
+let b = 'hello';
+
+a ??= b;
+console.log(a); // 'hello'
+
+```
+
+**Numeric Separators**
+> 数字分隔符（Numeric Separators）允许我们在数字中使用下划线作为分隔符，以提高数字的可读性
+```javascript
+const num = 1_000_000;
+console.log(num); // 1000000
+
+```
