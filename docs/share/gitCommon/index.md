@@ -2,7 +2,7 @@
 
 > 转自 https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html
 
-![git 工作](https://i.postimg.cc/DzDTPdzz/1583080088118-22166e2e-554c-414c-a4ea-2420d4350126.png)
+![git 工作](http://cdn.huasi.fun/img/1583080088118-22166e2e-554c-414c-a4ea-2420d4350126.png)
 
 - Workspace：工作区
 - Index / Stage：暂存区
